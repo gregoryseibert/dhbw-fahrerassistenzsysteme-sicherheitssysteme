@@ -1,11 +1,8 @@
 function [ay_val, delta_val, dpsi_val] = SimulationQuerDynamik(simTime, simStep, deltaH, r, v, CvStern, ChStern, controllerActive, lv, lh, is, m, theta, g)
 
-%% Init Values
-mDivTheta = m / theta;
-
 %% Setup Simulation
-handle = load_system('QuerDynamicModell');
-params = get_param('QuerDynamicModell','modelworkspace');
+handle = load_system('Querdynamikmodell');
+params = get_param('Querdynamikmodell','modelworkspace');
 params.assignin('controllerActive', controllerActive);
 params.assignin('deltaH', deltaH);
 params.assignin('r', r);
@@ -15,12 +12,13 @@ params.assignin('lh',lh);
 params.assignin('cvStern',CvStern);
 params.assignin('chStern',ChStern);
 params.assignin('is',is);
-params.assignin('mDivTheta',mDivTheta);
+params.assignin('theta',theta);
+params.assignin('m',m);
 params.assignin('g',g);
 
 
 %% Simulate
-simOut = sim('QuerDynamicModell','Solver','ode4','FixedStep',num2str(simStep),'StopTime',num2str(simTime));
+simOut = sim('Querdynamikmodell','Solver','ode4','FixedStep',num2str(simStep),'StopTime',num2str(simTime));
 ay = simOut.get('ay');
 delta = simOut.get('delta');
 vy = simOut.get('vy');
@@ -38,6 +36,6 @@ end
 ay_val = ay.data(end,:);
 delta_val = delta.data(end,:);
 dpsi_val = dpsi.data(end,:);
-close_system('QuerDynamicModell',0);
+close_system('Querdynamikmodell',0);
 
 end
