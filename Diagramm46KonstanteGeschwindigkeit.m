@@ -9,7 +9,7 @@ function Diagramm46KonstanteGeschwindigkeit(plotInstance, v0, g, lv, lh, lEG, lS
     ChStern = 1./(g*SG);
     CvStern = ConvertGradToCStern(EG, 0, g, ChStern);
 
-    simStep = 0.001;
+    simStep = 0.01;
     simTime = 10;
 
     colors = [[0 0 0.5], [0.8 0.4 0], [0.5 0 0]];
