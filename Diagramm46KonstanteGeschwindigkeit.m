@@ -16,7 +16,7 @@ function Diagramm46KonstanteGeschwindigkeit(plotInstance, v0, g, lv, lh, lEG, lS
     hold(plotInstance,'off');
     
     for k = 1:size(CvStern,2)
-        [ay, delta] = Diagramm46Simulation(simTime, simStep, deltaH, r, v0, CvStern(k), ChStern, controllerActive, lv, lh, is, m, theta, g);
+        [ay, delta] = Querdynamik(simTime, simStep, deltaH, r, v0, CvStern(k), ChStern, controllerActive, lv, lh, is, m, theta, g);
 
         plot(plotInstance, ay, delta, 'LineWidth', 2.5, 'Color', colors((k-1)*3+1:k*3));
         hold(plotInstance,'on');
